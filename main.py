@@ -317,57 +317,5 @@ print('After moving Ball Down, Left, and into a Changeup to a Lefty : ',
       afterChangePlateSideLeftAndUpAndChangeup)
 
 
-def get_fields(schedule):
-    """
-
-    Q3 -- 
-
-    If we reduce this problem to a Gale-Shapley instance, it is simple.
-    From there, we can pretend that the Fields are the proposers and the Teams are the proposees
-
-
-    Basically Gale-Shapley?
-
-    Initialize their preferences:
-        - Teams will have preferences in the order of their schedules by time slot
-        - Fields will have preferences in the reverse order from their schedules by time slot
-
-    While there is a field f who is free and hasn't yet asked every team to play:
-
-            - Let t be the highest-ranked team in f's preference list
-            to whom f has not yet asked to play
-
-            - If t is free:
-                - (t, f) decide to match up
-            - Else that must mean t is currently paired up with f'
-                - If t prefers f' to f then f remains free
-                - Else t prefers f to f' and (t, f) become paired and f' becomes free
-
-    Return the set of matched pairs
-
-
-    -- The run-time of this algorithm is O(n^2):
-
-        There will be at most n^2 iterations throughout this algorithm, per 1.3 in the textbook.
-        This is better than O(mn) since m>n 
-
-    -- We will prove correctness with a proof by contradiction:
-
-        If we assume an instability exists where:
-
-        Field 1 is paired with team 1, and field 2 is paired with team 2
-
-        However: Field 1 prefers team 2 to team 1 and team 2 prefers field 1 to field 2
-
-        In the execution of the algorithm that produced our final pairings, we know
-        that by definition field one's last proposal was to team 1.
-        We can consider if field one did ask team 2 at some point earlier if they wanted 
-        to be a pair. If it didn't, then team 1 must occur higher on field one's preference list 
-        than team 2, which contradicts our assumption that field one prefers team 2 to team 1.
-        If it did, then it was rejected by team 2 in favor of some other team, say team 3, 
-        who team 2 prefers to field 1. Field 2 is the final partner of team 2, so either
-        field 3 = field 2 or by the Gale Shapley Algorithm, team 2 prefers the final
-        partner field 2 to field. This does not really matter, since either way this contradicts 
-        our assumption that team 2 prefers field one to field 2.
 
     """
